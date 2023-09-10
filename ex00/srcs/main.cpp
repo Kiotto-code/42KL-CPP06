@@ -1,9 +1,11 @@
 # include "ScalarConverter.hpp"
 
-int main(void)
+int main(int ac, char **av)
 {
-	std::string num = "48";
-	ScalarConverter::convert(num);
+	if (ac == 2)	
+		ScalarConverter::convert(av[1]);
+	else
+		std::cout << "Wrong argument entered!" << std::endl;
 }
 
 
