@@ -3,3 +3,4 @@ if [ $# -eq 0 ]; then
 else
 	find . -type d -name $1 -exec make -C {} \;
 fi
+

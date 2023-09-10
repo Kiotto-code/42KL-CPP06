@@ -34,20 +34,20 @@ class ScalarConverter
 		// static void	convertor(double parameter);
 	public:
 		static void	convert(std::string const &parameter);
-		int toInt() const {
-        // Implement your custom conversion logic to int here
-			return static_cast<int>(input);
-		}
+		// int toInt() const {
+        // // Implement your custom conversion logic to int here
+		// 	return static_cast<int>(input);
+		// }
 
-		float toFloat() const {
-			// Implement your custom conversion logic to float here
-			return static_cast<float>(input);
-		}
+		// float toFloat() const {
+		// 	// Implement your custom conversion logic to float here
+		// 	return static_cast<float>(input);
+		// }
 
-		char toChar() const {
-			// Implement your custom conversion logic to char here
-			return static_cast<char>(static_cast<int>(input));
-		}
+		// char toChar() const {
+		// 	// Implement your custom conversion logic to char here
+		// 	return static_cast<char>(static_cast<int>(input));
+		// }
 		class InvalidException: public std::exception
 		{
 			public:
