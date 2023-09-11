@@ -88,14 +88,14 @@ void	ScalarConverter::displayAll( double val )
     char myChar = static_cast<char>(static_cast<int>(val));
     // char myChar = static_cast<char>((val));
 
-	std::cout << "Converted int: " << myInt << std::endl;
-	std::cout << std::setprecision(1) << std::fixed;
-	std::cout << "Converted double: " << val << std::endl;
-    std::cout << "Converted float: " << myFloat << "f" << std::endl;
 	if (isprint(myChar))
 		std::cout << "Converted char: " << myChar << std::endl;
 	else
 		std::cout << "Converted char: " << "Not Printable" << std::endl;
+	std::cout << "Converted int: " << myInt << std::endl;
+	std::cout << std::setprecision(1) << std::fixed;
+    std::cout << "Converted float: " << myFloat << "f" << std::endl;
+	std::cout << "Converted double: " << val << std::endl;
 
 }
 
