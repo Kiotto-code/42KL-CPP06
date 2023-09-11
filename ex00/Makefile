@@ -1,33 +1,3 @@
-# NAME					=	a.out
-# CPP						=	c++
-# CPPFLAG					=	-Wall -Werror -Wextra -g3 -std=c++98 -fsanitize=address
-# INCLUDES				=	./includes
-# SRCS_PATH				=	./srcs
-# OBJS_PATH				=	./objs
-# SRCS					=	$(wildcard ${SRCS_PATH}/*.cpp)
-# # SRCS					=	$(shell find ./srcs -name "*.cpp")
-# OBJS					=	$(patsubst $(SRCS_PATH)/%.cpp, $(OBJS_PATH)/%.o, $(SRCS))
-
-# all						:	$(NAME)
-# $(NAME)					:	$(OBJS)
-# 							$(CPP) $(CPPFLAG) -I$(INCLUDES) $^ -o $@
-# $(OBJS_PATH)/%.o		:	$(SRCS_PATH)/%.cpp $(INCLUDES) ./Makefile | $(OBJS_PATH)
-# 							$(CPP) $(CPPFLAG) -I$(INCLUDES) -c $< -o $@
-
-# $(OBJS_PATH)			:
-# 							mkdir -p $(@D)
-
-# clean					:
-# 							rm -rf $(OBJS_PATH)
-
-# fclean					:	clean
-# 							rm -rf $(NAME)
-
-# re						:	fclean all
-
-# .PHONY					:	all clean fclean re
-
-
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -36,7 +6,7 @@
 #    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 17:19:00 by yichan            #+#    #+#              #
-#    Updated: 2023/09/07 00:57:21 by yichan           ###   ########.fr        #
+#    Updated: 2023/09/10 23:17:01 by yichan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

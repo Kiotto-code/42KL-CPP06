@@ -8,7 +8,7 @@
 // // # pragma once non eed pragma once if include guards were writtem
 # include <iostream>
 # include <iomanip>
-# include <cctype>
+# include <sstream>
 
 
 class ScalarConverter

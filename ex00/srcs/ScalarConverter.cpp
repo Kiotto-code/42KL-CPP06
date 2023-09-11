@@ -2,9 +2,6 @@
 // # include "ScalarConverter.hpp"
 
 #include "ScalarConverter.hpp"
-#include <iomanip>
-#include <cctype>
-#include <iostream>
 
 ScalarConverter::ScalarConverter( void )
 {
@@ -17,8 +14,23 @@ ScalarConverter::~ScalarConverter ( void )
 }
 
 
+// bool	ScalarConverter::specialString(std::string const &str)
+// {
+// 	if (str == "nan" || str == "nanf")
+// 		throw (NaNException());
+// 	else if (str == "+inf" || str == "+inff")
+// 		throw (PositiveInfinityException());
+// 	else if (str == "-inf" || str == "-inff")
+// 		throw (NegativeInfinityException());
+// 	else
+// 		return (false);
+// 	return (true);
+// }
 bool	ScalarConverter::specialString(std::string const &str)
 {
+	// std::string un_signed = str;
+	// if (str[0] == '+')
+	// 	un_signed.erase(un_signed.begin());
 	if (str == "nan" || str == "nanf")
 		throw (NaNException());
 	else if (str == "+inf" || str == "+inff")
@@ -30,18 +42,43 @@ bool	ScalarConverter::specialString(std::string const &str)
 	return (true);
 }
 
-bool	ScalarConverter::isNumStr(std::string &str)
-{
+// bool	ScalarConverter::isNumStr(std::string &str)
+// {
+// 	if (str.back() == 'f')
+// 		str.pop_back();
+// 	std::string::size_type sign = 0;
+// 	if (str[sign] == '+' || str[sign] == '-')
+// 		sign +=1;
+// 	for (std::string::size_type i=sign; i<str.size(); i++)
+// 	{
+// 		if (isdigit(str[i]) || str[i] == '.')
+// 			i++;
+// 		else if (!isdigit(str[i]))
+// 			return false;
+// 	}
+// 	return (true);
+// }
+
+bool	ScalarConverter::isNumStr(std::string& str) {
+	// if (str.size() > 1 && isalpha(str[1]))
+	if (isalpha(str[1]))
+		return false;
 	if (str.back() == 'f')
 		str.pop_back();
-	for (std::string::size_type i=0; i<str.size(); i++)
-	{
-		if (isdigit(str[i]) || str[i] == '.')
-			i++;
-		else if (!isdigit(str[i]))
-			return false;
-	}
-	return (true);
+    std::istringstream iss(str);
+    double testValue;
+
+    // Attempt to read a double from the string
+    if (iss >> testValue) {
+        // Check if there are no trailing characters after the double
+        char remaining;
+        if (iss >> remaining) {
+            return false; // If there are remaining characters, it's not a valid double
+        }
+        return true; // Successfully read a double
+    }
+
+    return false; // Couldn't read a double from the string
 }
 
 void	ScalarConverter::displayAll( double val )
@@ -75,13 +112,14 @@ void	ScalarConverter::convert(std::string const &input)
             modInput += input[i]; // Append non-space and non-tab characters to the result
         }
     }
+	std::cout << "check:" << modInput << std::endl;
 
 	try
 	{
 		if (specialString(modInput))
 			;
-		else if (isalpha(modInput[0]) && modInput.size() == 1)
-			displayAll(static_cast<double>(modInput[0]));
+		else if (isalpha(input[0]) && input.size() == 1)
+			displayAll(static_cast<double>(input[0]));
 		else if (isNumStr(modInput))
 			displayAll(std::stod(modInput));
 		else	
