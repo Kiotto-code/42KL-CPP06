@@ -85,10 +85,10 @@ void	ScalarConverter::displayAll( double val )
 {
 	int myInt = static_cast<int>(val);
     float myFloat = static_cast<float>(val);
-    char myChar = static_cast<char>(static_cast<int>(val));
-    // char myChar = static_cast<char>((val));
+    // char myChar = static_cast<char>(static_cast<int>(val));
+    char myChar = static_cast<char>((val));
 
-	if (isprint(myChar))
+	if (isprint(myChar) && val >= 0)
 		std::cout << "Converted char: " << myChar << std::endl;
 	else
 		std::cout << "Converted char: " << "Not Printable" << std::endl;
@@ -112,43 +112,42 @@ void	ScalarConverter::convert(std::string const &input)
             modInput += input[i]; // Append non-space and non-tab characters to the result
         }
     }
-	std::cout << "check:" << modInput << std::endl;
 
 	try
 	{
 		if (specialString(modInput))
 			;
-		else if (isalpha(input[0]) && input.size() == 1)
+		else if (!isdigit(input[0]) && input.size() == 1)
 			displayAll(static_cast<double>(input[0]));
 		else if (isNumStr(modInput))
 			displayAll(std::stod(modInput));
 		else	
-			std::cout << "No integer entry receiveed, pls retry";
+			std::cout << "No integer entry received, pls retry";
 	}
 	
 	catch (const PositiveInfinityException &e)
 	{
 		std::cout
-			<< "char: impossible" << '\n'
-			<< "int: impossible" << '\n'
-			<< "float: +inff" << '\n'
-			<< "double: +inf" << std::endl;
+		<< "char: impossible" << '\n'
+		<< "int: impossible" << '\n'
+		<< "float: +inff" << '\n'
+		<< "double: +inf" << std::endl;
 	}
 	catch (const NegativeInfinityException &e)
 	{
 		std::cout
-			<< "char: impossible" << '\n'
-			<< "int: impossible" << '\n'
-			<< "float: -inff" << '\n'
-			<< "double: -inf" << std::endl;
+		<< "char: impossible" << '\n'
+		<< "int: impossible" << '\n'
+		<< "float: -inff" << '\n'
+		<< "double: -inf" << std::endl;
 	}
 	catch (const NaNException &e)
 	{
 		std::cout
-			<< "char: impossible" << '\n'
-			<< "int: impossible" << '\n'
-			<< "float: nanf" << '\n'
-			<< "double: nan" << std::endl;
+		<< "char: impossible" << '\n'
+		<< "int: impossible" << '\n'
+		<< "float: nanf" << '\n'
+		<< "double: nan" << std::endl;
 	}
 	catch (const std::exception &e)
 	{
