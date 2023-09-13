@@ -8,11 +8,22 @@ ScalarConverter::ScalarConverter( void )
 	std::cout << "[ScalarConverter] default constructor was being called " << std::endl;
 }
 
+ScalarConverter::ScalarConverter(ScalarConverter const &src)
+{
+	std::cout << "[ScalarConverter] copy constructor was being called " << std::endl;
+	*this = src;
+}
+
 ScalarConverter::~ScalarConverter ( void )
 {
 	std::cout << "[ScalarConverter] destructor was being called " << std::endl;
 }
 
+ScalarConverter &ScalarConverter::operator = (ScalarConverter const &src)
+{
+	return (*this);
+	(void)src;
+}
 
 // bool	ScalarConverter::specialString(std::string const &str)
 // {

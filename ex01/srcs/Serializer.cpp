@@ -1,58 +1,40 @@
 #include <iostream>
 #include <cstdint>
+#include "Serializer.hpp"
 
-struct Data {
-    int value;
-	std::string str;
-};
-// class Data {
-// public:
-//     int value;
-// 	std::string str;
+Serializer::Serializer(void)
+{
+	std::cout << "[Serializer] default constructor was being called" << std::endl;
+}
 
-// 	Data(void);
-//     Data(int val) : value(val) {};
-//     Data(std::string const &val) : str(val) {};
-// };
+Serializer::Serializer(Serializer const &src)
+{
+	std::cout << "[Serializer] copy constructor was being called" << std::endl;
+	*this = src;
+}
 
-class Serializer {
-public:
-    static uintptr_t serialize(Data* ptr) {
+Serializer::~Serializer(void)
+{
+	std::cout << "[Serializer] destructor was being called" << std::endl;
+}
+
+Serializer	&Serializer::operator = (const Serializer &src)
+{
+	std::cout << "assdignment operator was being called" << std::endl;
+	return (*this);
+	(void)src;
+}
+
+uintptr_t Serializer::serialize(Data* ptr) {
         return reinterpret_cast<uintptr_t>(ptr);
     }
-
-    static Data* deserialize(uintptr_t raw) {
+Data* Serializer::deserialize(uintptr_t raw) {
         return reinterpret_cast<Data*>(raw);
     }
-};
-
-// int main() {
-//     // Create a Data object
-//     Data* originalPtr = new Data(42);
-
-//     // Serialize the pointer
-//     uintptr_t serializedPtr = Serializer::serialize(originalPtr);
-
-//     // Deserialize the serialized pointer
-//     Data* deserializedPtr = Serializer::deserialize(serializedPtr);
-
-//     // Check if the deserialized pointer is equal to the original pointer
-//     if (originalPtr == deserializedPtr) {
-//         std::cout << "Serialization and deserialization successful!" << std::endl;
-//         std::cout << "Original Value: " << originalPtr->value << std::endl;
-//     } else {
-//         std::cout << "Serialization and deserialization failed!" << std::endl;
-//     }
-
-//     // Clean up allocated memory
-//     delete originalPtr;
-
-//     return 0;
-// }
 
 int main()
 {
-	Serializer s = Serializer();
+	// Serializer s = Serializer();
 	Data data;
 	Data* dataPtr;
 	uintptr_t raw;
@@ -63,10 +45,10 @@ int main()
 	std::cout << data.str << std::endl;
 	std::cout << data.value << std::endl;
 
-	raw = s.serialize(&data);
-	std::cout << raw << std::endl;
+	raw = Serializer::serialize(&data);
+	std::cout << "rawadd value:" << raw << std::endl;
 
-	dataPtr = s.deserialize(raw);
+	dataPtr = Serializer::deserialize(raw);
 	std::cout << dataPtr << std::endl;
 	std::cout << dataPtr->str << std::endl;
 	std::cout << dataPtr->value << std::endl;
