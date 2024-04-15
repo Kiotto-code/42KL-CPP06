@@ -59,34 +59,27 @@ void	identify(Base &p)
 	catch(const std::exception& e) {}
 }
 
-// int main()
-// {
-// 	{
-// 		A test;
-// 		test.whoAmI();
-// 	}
-// 	{
-// 		B test;
-// 		test.whoAmI();
-// 	}
-// 	{
-// 		C test;
-// 		test.whoAmI();
-// 	}
-// 	{
-		
-// 		Base *test = generate();
-// 		test->whoAmI();
-// 	}
-// }
-
-int main() 
+int main()
 {
-	Base *base;
-
-	base = generate();
-	identify(base);
-	identify(*base);
-
-	return 0;
+	{
+		A test;
+		test.whoAmI();
+		identify(test);
+		identify(&test);
+	}
+	{
+		B test;
+		test.whoAmI();
+	}
+	{
+		C test;
+		test.whoAmI();
+	}
+	{
+		
+		Base *test = generate();
+		test->whoAmI();
+		identify(test);
+		identify(*test);
+	}
 }
