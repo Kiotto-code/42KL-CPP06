@@ -24,23 +24,69 @@ Base	*generate(void)
 	return (arr[ret]);
 }
 
-int main()
+void	identify(Base *p)
 {
+	if (dynamic_cast<A *>(p) != NULL)
+		std::cout << "A" << std::endl;
+	if (dynamic_cast<B *>(p) != NULL)
+		std::cout << "B" << std::endl;
+	if (dynamic_cast<C *>(p) != NULL)
+		std::cout << "C" << std::endl;
+}
+
+void	identify(Base &p)
+{
+	try
 	{
-		A test;
-		test.whoAmI();
+		A&	a = dynamic_cast<A&>(p);
+		(void)a;
+		std::cout << "A" << std::endl; 
 	}
+	catch(const std::exception& e) {}
+	try
 	{
-		B test;
-		test.whoAmI();
+		B&	b = dynamic_cast<B&>(p);
+		(void)b;
+		std::cout << "B" << std::endl; 
 	}
+	catch(const std::exception& e) {}
+	try
 	{
-		C test;
-		test.whoAmI();
+		C&	c = dynamic_cast<C&>(p);
+		(void)c;
+		std::cout << "C" << std::endl; 
 	}
-	{
+	catch(const std::exception& e) {}
+}
+
+// int main()
+// {
+// 	{
+// 		A test;
+// 		test.whoAmI();
+// 	}
+// 	{
+// 		B test;
+// 		test.whoAmI();
+// 	}
+// 	{
+// 		C test;
+// 		test.whoAmI();
+// 	}
+// 	{
 		
-		Base *test = generate();
-		test->whoAmI();
-	}
+// 		Base *test = generate();
+// 		test->whoAmI();
+// 	}
+// }
+
+int main() 
+{
+	Base *base;
+
+	base = generate();
+	identify(base);
+	identify(*base);
+
+	return 0;
 }
