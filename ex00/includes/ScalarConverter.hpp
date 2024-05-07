@@ -9,7 +9,7 @@
 # include <iostream>
 # include <iomanip>
 # include <sstream>
-
+# include "Color.hpp"
 
 class ScalarConverter
 {
@@ -44,6 +44,16 @@ class ScalarConverter
 		};
 
 };
+
+// // template
+// template <typename A, typename B>
+// bool checkLimit(A left_v, B right_v)
+// {
+// 	A a = std::numeric_limits<A>::max();
+// 	// long test = static_cast<long>(right_v);
+
+
+// }
 
 #endif
 

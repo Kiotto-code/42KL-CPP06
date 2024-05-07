@@ -10,7 +10,8 @@ Serializer::Serializer(void)
 Serializer::Serializer(Serializer const &src)
 {
 	std::cout << "[Serializer] copy constructor was being called" << std::endl;
-	*this = src;
+	// *this = src;
+	(void)src;
 }
 
 Serializer::~Serializer(void)

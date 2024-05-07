@@ -10,7 +10,7 @@ struct Data {
 
 class Serializer {
 	private:
-		static Data *m_member;
+		// static Data *m_member;
 	public:
 		Serializer(void);
 		Serializer(Serializer const & src);

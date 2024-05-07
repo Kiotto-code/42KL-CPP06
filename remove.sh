@@ -1,6 +1,4 @@
-
-if [ $# -eq 0 ]; then
-	find . -type f -name "Makefile" -execdir make fclean \;
-else
-	find . -name "$1" -exec make fclean -C {} \;
-fi
+# find . -name "a.out" -o -name "objs" -exec rm -rf {} \;
+# cd -name "*ex" && make fclean
+# find . -name "ex*" -exec $(MAKE) fclean {} \;
+find . -name "Makefile" -execdir make fclean \;
