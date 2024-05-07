@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 21:53:00 by yichan            #+#    #+#             */
-/*   Updated: 2024/05/08 00:20:27 by yichan           ###   ########.fr       */
+/*   Updated: 2024/05/08 00:21:44 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,6 @@
 # define DARK_GREY	"\x1B[1;30m"   // Sets the text color to dark grey.
 
 # define GOLD "\x1B[1;33m"   // Sets the text color to a bright yellow (light yellow) with bold attribute.
-
 # define cterm() std::cin.get(); std::cout << "\e[1;1H\e[2J";
-
-// static void cterm(void)
-// {
-// 	std::cin.get();
-// 	std::cout << "\e[1;1H\e[2J";
-// }
 
 #endif

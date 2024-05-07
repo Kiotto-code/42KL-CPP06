@@ -59,6 +59,13 @@ void	identify(Base &p)
 	catch(const std::exception& e) {}
 }
 
+class Derived : public Base {
+	public:
+		void whoAmI(void) const{
+			std::cout << "I'm Derived" << std::endl;
+	}
+};
+
 int main()
 {
 	{
@@ -70,16 +77,51 @@ int main()
 	{
 		B test;
 		test.whoAmI();
+		identify(test);
+		identify(&test);
 	}
 	{
 		C test;
 		test.whoAmI();
+		identify(test);
+		identify(&test);
 	}
 	{
-		
 		Base *test = generate();
 		test->whoAmI();
 		identify(test);
 		identify(*test);
 	}
+
+
+	cterm()
+	std::cout << GOLD"TEST ERROR" << std::endl;
+	try
+	{
+		Derived test;
+		A&	a = dynamic_cast<A&>(test);
+		(void)a;
+		std::cout << "A" << std::endl; 
+	}
+	catch(const std::exception& e) {std::cout << e.what() << std::endl;}
 }
+
+// class Derived : public Base {
+// 	public:
+// 		void whoAmI(void) const{
+// 			std::cout << "I'm Derived" << std::endl;
+// 		}
+// };
+
+// int main() {
+//     Derived derivedObj;
+
+//     try {
+//         identify(derivedObj); // Pass a Derived object to the function
+// 		// std::cout << "FAILED" << std::endl;
+//     } catch (const std::bad_cast& e) {
+//         std::cerr << "Dynamic cast failed: " << e.what() << std::endl;
+//     }
+
+//     return 0;
+// }
