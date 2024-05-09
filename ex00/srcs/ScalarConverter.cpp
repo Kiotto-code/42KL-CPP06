@@ -1,6 +1,3 @@
-// // # include "includes/ScalarConverter.hpp"
-// # include "ScalarConverter.hpp"
-
 #include "ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter( void )
@@ -25,23 +22,8 @@ ScalarConverter &ScalarConverter::operator = (ScalarConverter const &src)
 	(void)src;
 }
 
-// bool	ScalarConverter::specialString(std::string const &str)
-// {
-// 	if (str == "nan" || str == "nanf")
-// 		throw (NaNException());
-// 	else if (str == "+inf" || str == "+inff")
-// 		throw (PositiveInfinityException());
-// 	else if (str == "-inf" || str == "-inff")
-// 		throw (NegativeInfinityException());
-// 	else
-// 		return (false);
-// 	return (true);
-// }
 bool	ScalarConverter::specialString(std::string const &str)
 {
-	// std::string un_signed = str;
-	// if (str[0] == '+')
-	// 	un_signed.erase(un_signed.begin());
 	if (str == "nan" || str == "nanf")
 		throw (NaNException());
 	else if (str == "+inf" || str == "+inff")
@@ -53,26 +35,7 @@ bool	ScalarConverter::specialString(std::string const &str)
 	return (true);
 }
 
-// bool	ScalarConverter::isNumStr(std::string &str)
-// {
-// 	if (str.back() == 'f')
-// 		str.pop_back();
-// 	std::string::size_type sign = 0;
-// 	if (str[sign] == '+' || str[sign] == '-')
-// 		sign +=1;
-// 	for (std::string::size_type i=sign; i<str.size(); i++)
-// 	{
-// 		if (isdigit(str[i]) || str[i] == '.')
-// 			i++;
-// 		else if (!isdigit(str[i]))
-// 			return false;
-// 	}
-// 	return (true);
-// }
-
 bool	ScalarConverter::isNumStr(std::string& str) {
-	// if (str.size() > 1 && isalpha(str[1]))
-	// std::cout << "str: " << str << std::endl;
 	if (isalpha(str[1]))
 		return false;
 	if (str.back() == 'f')
@@ -89,31 +52,8 @@ bool	ScalarConverter::isNumStr(std::string& str) {
         }
         return true; // Successfully read a double
     }
-	// std::cout << "testValue: " << testValue << std::endl;
-	// std::cin.get();
     return false; // Couldn't read a double from the string
 }
-// bool	ScalarConverter::isNumStr(std::string& str) {
-// 	// if (str.size() > 1 && isalpha(str[1]))
-// 	if (isalpha(str[1]))
-// 		return false;
-// 	if (str.back() == 'f')
-// 		str.pop_back();
-//     std::istringstream iss(str);
-//     double testValue;
-
-//     // Attempt to read a double from the string
-//     if (iss >> testValue) {
-//         // Check if there are no trailing characters after the double
-//         char remaining;
-//         if (iss >> remaining) {
-//             return false; // If there are remaining characters, it's not a valid double
-//         }
-//         return true; // Successfully read a double
-//     }
-
-//     return false; // Couldn't read a double from the string
-// }
 
 void	ScalarConverter::displayAll(double val )
 {
@@ -148,24 +88,6 @@ void	ScalarConverter::displayAll(double val )
 		std::cout << "Converted double: " << val << std::endl;
 }
 
-// void	ScalarConverter::displayAll( double val )
-// {
-// 	int myInt = static_cast<int>(val);
-//     float myFloat = static_cast<float>(val);
-//     // char myChar = static_cast<char>(static_cast<int>(val));
-//     char myChar = static_cast<char>((val));
-
-// 	if (isprint(myChar) && val >= 0)
-// 		std::cout << "Converted char: " << "'" << myChar << "'" << std::endl;
-// 	else
-// 		std::cout << "Converted char: " << "non-displayable" << std::endl;
-// 	std::cout << "Converted int: " << myInt << std::endl;
-// 	std::cout << std::setprecision(1) << std::fixed;
-//     std::cout << "Converted float: " << myFloat << "f" << std::endl;
-// 	std::cout << "Converted double: " << val << std::endl;
-
-// }
-
 void	ScalarConverter::convert(std::string const &input)
 {
 		if (input.empty())
@@ -176,14 +98,6 @@ void	ScalarConverter::convert(std::string const &input)
 		std::string modInput = input;
 	try
 	{
-		// for (std::string::size_type i = 0; i < input.size(); ++i) {
-		// 	if (input[i] == ' ' && input[i] == '\t') { // Check if the character is not a space or tab
-		// 		// modInput += input[i]; // Append non-space and non-tab characters to the result
-		// 		throw std::invalid_argument("No integer entry received, pls retry argument");
-		// 	}
-		// }
-		// std::stod(modInput);
-		// std::cin.get();
 		if (specialString(modInput))
 			;
 		else if (!isdigit(input[0]) && input.size() == 1)
