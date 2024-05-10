@@ -14,14 +14,14 @@
 class ScalarConverter
 {
 	private:
-		ScalarConverter( void );
-		ScalarConverter(ScalarConverter const &src);
-		~ScalarConverter( void );
 		static bool	specialString(std::string const &parameter);
 		static bool	isNumStr(std::string &parameter);
 
 		static void	displayAll( double );
 	public:
+		ScalarConverter( void );
+		ScalarConverter(ScalarConverter const &src);
+		~ScalarConverter( void );
 		ScalarConverter	&operator = (ScalarConverter const &src);
 		static void	convert(std::string const &parameter);
 

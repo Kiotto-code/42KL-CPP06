@@ -26,6 +26,7 @@ Base	*generate(void)
 
 void	identify(Base *p)
 {
+	// dynamic_cast<A *>(p);
 	if (dynamic_cast<A *>(p) != NULL)
 		std::cout << "A" << std::endl;
 	if (dynamic_cast<B *>(p) != NULL)
@@ -104,6 +105,8 @@ int main()
 		std::cout << "A" << std::endl; 
 	}
 	catch(const std::exception& e) {std::cout << e.what() << std::endl;}
+	
+	std::cout << "asd" <<std::endl;
 }
 
 // class Derived : public Base {

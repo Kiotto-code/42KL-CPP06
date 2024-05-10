@@ -2,8 +2,11 @@
 
 int main(int ac, char **av)
 {
+	ScalarConverter asd;
+
 	if (ac == 2)	
-		ScalarConverter::convert(av[1]);
+		// ScalarConverter::convert(av[1]);
+		asd.convert(av[1]);
 	else
 		std::cout << "Wrong argument entered!" << std::endl;
 }
