@@ -3,7 +3,7 @@
 #include "C.hpp"
 #include "Base.hpp"
 #include <ctime>
-
+#include <cstdlib>  // For rand() and srand()
 Base	*generate(void)
 {
 	srand(time(0));
@@ -92,6 +92,7 @@ int main()
 		test->whoAmI();
 		identify(test);
 		identify(*test);
+		delete test;
 	}
 
 
@@ -106,7 +107,6 @@ int main()
 	}
 	catch(const std::exception& e) {std::cout << e.what() << std::endl;}
 	
-	std::cout << "asd" <<std::endl;
 }
 
 // class Derived : public Base {
